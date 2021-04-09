@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Beautiful PDFs from HTML</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<!--script src="../toc.js"></script-->
+	<script src="../paged.polyfill.js"></script>
+	<script>
+		class handlers extends Paged.Handler {
+		    constructor(chunker, polisher, caller) {
+				super(chunker, polisher, caller);
+		    }
+/*		    beforeParsed(content){
+			    createToc({
+		    		content: content,
+		    		tocElement: '#toc',
+		    		titleElements: [ 'h2:not(.cover-header)', 'h3:not(.cover-header)' ]
+		    	});
+			}*/
+		  }
+		  Paged.registerHandlers(handlers);
+	</script>
+</head>
+
+<body>
+
+<!-- 1.0 Cover Page -->
+<div class="cover-page">
+	<h1>%%TITLE%%</h1>
+	<h3 class="cover-header no-counter">Lesson %%DAY%%</h3>
+</div>
+
+<!-- 2.0 Table of Contents --
+<div class="table-of-contents">
+	<h1 class="toc-header" id="toc-start">Table of Contents</h1>
+	<ol id="toc">
+<-- toc.js will automatically insert TOC here -- >
+	</ol>
+</div-->
+
+<!-- 3.0 Start of Main Content -->
+
+<!-- Setting the footer 
+<p class="footer"><a href="#toc-start">Table of Contents</a></p-->
+
+<!-- Reseting the header counters (as cover page also uses them) -->
+<div class="counter-reset"></div>
+
+%%CONTENT%%
+
+<!-- 4.0 MathJax Add-on
+<script>
+window.MathJax = {
+	loader: { load: ['[tex]/ams'] },
+	tex: { packages: {'[+]': ['ams']} },
+	"fast-preview": { disabled: true },
+	extensions: ["tex2jax.js", "asciimath2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js", "TeX/noErrors.js"],
+	jax: ["input/TeX", "input/AsciiMath", "output/HTML-CSS"],
+	displayAlign: "left",
+	tex2jax: {
+  		inlineMath: [ ["\\(","\\)"] ],
+  		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+  		processEscapes: true
+	}, 
+	asciimath2jax: { delimiters: [['`','`']], preview: [""]},
+	"HTML-CSS": { fonts: ["STIX"] }
+}
+</script>
+<script type="text/javascript" sync src="MathJax-2.7.7/MathJax.js"></script>
+-->
+
+<!-- Additional MathJax Code (if you want to re-render math)
+<script>
+	const math = document.getElementsByClassName("math");
+ 	MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);  
+</script>
+-->
+</body>
+</html>

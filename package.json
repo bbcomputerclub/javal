@@ -1,0 +1,19 @@
+{
+  "name": "javal",
+  "version": "0.0.1",
+  "description": "java lessons",
+  "main": "generator.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbcomputerclub/javal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbcomputerclub/javal/issues"
+  },
+  "homepage": "https://github.com/bbcomputerclub/javal#readme",
+  "dependencies": {
+    "markdown-it": "^12.0.4"
+  }
+}
